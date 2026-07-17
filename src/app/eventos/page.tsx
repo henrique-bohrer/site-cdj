@@ -46,45 +46,49 @@ export default function EventosPage() {
     <>
       <Navbar />
       <main className="flex-1 bg-[var(--color-brand-bg-light)] dark:bg-[var(--background)] py-12">
-        <div className="container mx-auto px-4 max-w-5xl">
+        <div className="container mx-auto px-6 max-w-6xl py-8">
 
-          <div className="mb-12 text-center space-y-4">
-            <h1 className="text-4xl font-heading font-bold text-[var(--foreground)]">Eventos da Comunidade</h1>
-            <p className="text-[var(--foreground)] opacity-80 max-w-2xl mx-auto">
-              Participe de workshops, meetups e mentorias. Aprenda, faça networking e acelere sua evolução.
+          <motion.div
+            className="mb-16 text-center space-y-6"
+            initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-5xl font-heading font-black tracking-tight text-[var(--foreground)]">Eventos da Comunidade</h1>
+            <p className="text-[var(--muted-foreground)] text-lg max-w-2xl mx-auto leading-relaxed">
+              Participe de workshops, meetups e mentorias. Aprenda, faça networking e acelere sua evolução na área.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {mockEvents.map((event, index) => (
               <motion.div
                 key={event.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 + (index * 0.1) }}
+                className="h-full"
               >
-                <Card className="h-full flex flex-col group">
-                  <CardHeader>
-                    <div className="flex justify-between items-start mb-2">
-                      <Badge variant="accent">{event.category}</Badge>
+                <Card className="h-full flex flex-col group hover:border-[var(--color-brand-accent)]">
+                  <CardHeader className="pb-4">
+                    <div className="flex justify-between items-start mb-4">
+                      <Badge variant="accent" className="px-3 py-1 font-medium">{event.category}</Badge>
                     </div>
-                    <CardTitle className="text-xl font-heading text-[var(--color-brand-primary)] group-hover:text-[var(--color-brand-dark)] transition-colors line-clamp-2">
+                    <CardTitle className="text-2xl font-heading font-bold text-[var(--color-brand-primary)] group-hover:text-[var(--color-brand-dark)] transition-colors line-clamp-2 leading-tight">
                       {event.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-1 flex flex-col gap-3">
-                    <p className="text-sm text-[var(--foreground)] opacity-70 mb-2 flex-1">
+                  <CardContent className="flex-1 flex flex-col gap-6">
+                    <p className="text-base text-[var(--muted-foreground)] leading-relaxed mb-2 flex-1 line-clamp-3">
                       {event.description}
                     </p>
-                    <div className="space-y-2 text-sm font-medium text-[var(--foreground)] opacity-80">
-                      <div className="flex items-center gap-2"><CalendarIcon className="w-4 h-4 text-[var(--color-brand-primary)]" /> {event.date}</div>
-                      <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-[var(--color-brand-primary)]" /> {event.time}</div>
-                      <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-[var(--color-brand-primary)]" /> {event.format}</div>
-                      <div className="flex items-center gap-2"><Users className="w-4 h-4 text-[var(--color-brand-primary)]" /> {event.attendees} vagas preenchidas</div>
+                    <div className="space-y-3 text-sm font-medium text-[var(--muted-foreground)]">
+                      <div className="flex items-center gap-3"><CalendarIcon className="w-4 h-4 text-[var(--color-brand-accent)]" /> {event.date}</div>
+                      <div className="flex items-center gap-3"><Clock className="w-4 h-4 text-[var(--color-brand-accent)]" /> {event.time}</div>
+                      <div className="flex items-center gap-3"><MapPin className="w-4 h-4 text-[var(--color-brand-accent)]" /> {event.format}</div>
+                      <div className="flex items-center gap-3"><Users className="w-4 h-4 text-[var(--color-brand-accent)]" /> {event.attendees} vagas preenchidas</div>
                     </div>
                   </CardContent>
-                  <CardFooter className="border-t border-[var(--card-border)] pt-4 mt-4">
-                    <Button className="w-full">Garantir Vaga</Button>
+                  <CardFooter className="border-t border-[var(--card-border)] pt-6 mt-auto">
+                    <Button className="w-full" size="lg">Garantir Vaga</Button>
                   </CardFooter>
                 </Card>
               </motion.div>

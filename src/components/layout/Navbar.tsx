@@ -19,24 +19,24 @@ export function Navbar() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--card-border)] bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/60">
-      <div className="container flex h-16 items-center justify-between mx-auto px-4">
-        <div className="flex items-center gap-6 md:gap-10">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="font-heading font-bold sm:inline-block text-[var(--color-brand-primary)] text-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--card-border)] bg-[var(--background)]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[var(--background)]/60 transition-colors duration-300">
+      <div className="container flex h-20 items-center justify-between mx-auto px-6 max-w-7xl">
+        <div className="flex items-center gap-10">
+          <Link href="/" className="flex items-center space-x-2 group">
+            <span className="font-heading font-black tracking-tight sm:inline-block text-[var(--foreground)] text-2xl group-hover:text-[var(--color-brand-primary)] transition-colors">
               Casa de Juniors
             </span>
           </Link>
-          <nav className="hidden gap-6 md:flex">
+          <nav className="hidden gap-8 md:flex">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "flex items-center text-sm font-medium transition-colors hover:text-[var(--color-brand-primary)]",
+                  "flex items-center text-sm font-medium transition-all duration-300 hover:text-[var(--color-brand-primary)] hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-left after:scale-x-0 after:bg-[var(--color-brand-primary)] after:transition-transform after:duration-300 hover:after:scale-x-100",
                   pathname === link.href
-                    ? "text-[var(--color-brand-primary)]"
-                    : "text-foreground/80"
+                    ? "text-[var(--color-brand-primary)] after:scale-x-100"
+                    : "text-foreground/70"
                 )}
               >
                 {link.label}
@@ -44,7 +44,7 @@ export function Navbar() {
             ))}
           </nav>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <Button
             variant="ghost"
             size="icon"

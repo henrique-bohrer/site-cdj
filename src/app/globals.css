@@ -18,25 +18,30 @@
 :root {
   --background: var(--color-brand-bg-light);
   --foreground: var(--color-brand-text);
-  --card-bg: #ffffff;
-  --card-border: #e2dfd9;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(226, 223, 217, 0.6);
+  --muted-foreground: rgba(58, 40, 24, 0.7);
 }
 
 .dark {
   --background: var(--color-brand-bg-dark);
   --foreground: var(--color-brand-neutral);
-  --card-bg: #3a2818;
-  --card-border: #4d3623;
+  --card-bg: rgba(58, 40, 24, 0.5);
+  --card-border: rgba(77, 54, 35, 0.6);
+  --muted-foreground: rgba(234, 217, 184, 0.7);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
 /* Animations */
