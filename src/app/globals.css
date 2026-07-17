@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-brand-primary: #C1622B;
+  --color-brand-dark: #7A4020;
+  --color-brand-accent: #E8B923;
+  --color-brand-neutral: #EAD9B8;
+  --color-brand-bg-dark: #2B1B10;
+  --color-brand-bg-light: #F4F1EC;
+  --color-brand-text: #3A2818;
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-poppins);
+}
+
+:root {
+  --background: var(--color-brand-bg-light);
+  --foreground: var(--color-brand-text);
+  --card-bg: #ffffff;
+  --card-border: #e2dfd9;
+}
+
+.dark {
+  --background: var(--color-brand-bg-dark);
+  --foreground: var(--color-brand-neutral);
+  --card-bg: #3a2818;
+  --card-border: #4d3623;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Animations */
+@keyframes breathing {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.animate-breathing {
+  animation: breathing 4s ease-in-out infinite;
+}
